@@ -1,0 +1,54 @@
+
+/* -----------------------------------------------------------------------------------kod do slider----------------------------------------------------- */
+
+.slider {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    z-index: 998;
+    margin-top: 30px;
+}
+
+.slides {
+    height: calc(100vh - 100px);
+}
+
+.klik:hover .slider {
+    position: relative;
+    top: -50px;
+}
+
+.slider img{
+    width: 100%;
+    display: none;
+    height: 100%;
+    border-radius: 20px;
+}
+img.displaySlide{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    animation: fade 1.5s;
+}
+.slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.421);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.prev {
+    left: 2px;
+
+}
+.next {
+    right: 2px;
+}
