@@ -1,29 +1,73 @@
+/* Kontener główny - wyrównanie do środka i ograniczenie szerokości */
 .set {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Siatka dla kafelków newsów */
 .news {
-    width: 95%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
-    gap: 20px;
-    margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  justify-items: center;
 }
+
+/* Pojedynczy kafelek newsa */
 .box {
-    border: 1px solid #e82a29;
-    border-radius: 15px;
-    height: 350px;
+  background: #ffffff;
+  border-radius: 20px; /* Zaokrąglone rogi jak na sliderze */
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Delikatny cień */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
+.box:hover {
+  transform: translateY(-5px); /* Efekt uniesienia po najechaniu */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Kontener na zdjęcie */
 .element {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
+  width: 100%;
+  height: 200px; /* Stała wysokość dla spójności siatki */
+  overflow: hidden;
 }
-
-
 
 .img {
-    width: 300px;
-    border-top-left-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Zdjęcie wypełnia przestrzeń bez zniekształceń */
+  transition: transform 0.5s ease;
+}
+
+.box:hover .img {
+  transform: scale(1.05); /* Delikatny zoom zdjęcia */
+}
+
+/* Tytuł newsa */
+.box h1 {
+  font-size: 1.2rem;
+  padding: 20px;
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Responsywność dla telefonów */
+@media (max-width: 600px) {
+  .news {
+    grid-template-columns: 1fr;
+  }
+  
+  .set {
+    padding: 0 10px;
+  }
 }

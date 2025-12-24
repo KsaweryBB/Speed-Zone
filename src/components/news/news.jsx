@@ -46,13 +46,8 @@ const News = () => {
                   src={`http://localhost:3001/${newi.image_path}`}
                   alt={newi.title}
                 />
-                <div className="opis">
-                  <p>{newi.date_i.split("T")[0]}</p>
-                  <p>{newi.director}</p>
-                </div>
               </div>
               <h1>{newi.title}</h1>
-              <p>{newi.description}</p>
             </Link>
           );
         })}
