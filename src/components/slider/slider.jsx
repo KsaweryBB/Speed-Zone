@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './slider.css';
+import styles from './slider.module.css'
 import page1 from '../../images/page1.jpg';
 import page2 from '../../images/page2.jpg';
 import page3 from '../../images/page3.jpg';
@@ -14,7 +14,7 @@ const slidesData = [
 
 ]
 
-function slider() {
+function Slider() {
     const [ slideIndex, setSlideIndex ] = useState(0);
 
     useEffect(() => {
@@ -34,21 +34,21 @@ const nextSlide = () => {
 }
 
     return (
-        <div className='slider'>
+        <div className={styles.slider}>
             {slidesData.map((src, index) => (
                 <img
                 key = {index}
                 src={src}
                 alt={`Slide ${index}`}
-                className={`slide ${index === slideIndex ? "displaySlide" : ""}`}
+                className={`${styles.slide} ${index === slideIndex ? styles.displaySlide : ""}`}
                 />
             ))}
-            <div className='buttons'>
-                <button className="prev" onClick={prevSlide}>&#10094;</button>
-                <button className="next" onClick={nextSlide}>&#10095;</button>
+            <div className={styles.buttons}>
+                <button className={styles.prev} onClick={prevSlide}>&#10094;</button>
+                <button className={styles.next} onClick={nextSlide}>&#10095;</button>
             </div>
         </div>
     )
 }
 
-export default slider;
+export default Slider;

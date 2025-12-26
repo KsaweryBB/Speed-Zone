@@ -1,0 +1,132 @@
+.footer {
+  width: 100%;
+  background-color: #1a1a1a;
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* Dzięki temu stopka będzie responsywna */
+  justify-content: space-between;
+  gap: 30px;
+  padding: 0 20px;
+}
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+.footer-section > ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding-left: 10px;
+  gap: 10px;
+  color: #b0b0b0;
+}
+.footer-section > ul > a {
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 21px;
+  position: relative;
+  transition: 0.5s ease-in-out;
+  font-weight: 400;
+}
+.footer-section > ul > a:hover {
+  color: #ff4d4d;
+  scale: 1.05;
+}
+.footer-section > ul > a::after {
+  content: "";
+  position: absolute;
+  background-color: #ff4d4d;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  display: block;
+  transition: width 0.5s ease-in-out;
+}
+.footer-section > ul > a:hover::after {
+  width: 60%;
+}
+.footer-section > p {
+  left: 0;
+  padding-left: 10px;
+  color: #b0b0b0;
+  font-weight: 400;
+}
+.logo {
+  color: white;
+  height: 32px;
+  margin: 10px;
+}
+.logo > span {
+  color: #ff4d4d;
+}
+.h1 {
+  padding: 0;
+  margin: 0;
+}
+.header-h2 {
+  margin: 10px;
+  color: white;
+  position: relative;
+}
+.footer-section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 50px;
+  height: 3px;
+  background-color: #ff4d4d;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding-left: 10px;
+}
+
+.social-icon {
+  background: #333;
+  color: white;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  background: #ff4d4d;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.footer-bottom::after {
+    content: '';
+    top: 15px;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    background-color: #b0b0b0;
+}
+.footer-bottom>p {
+    margin-top: 20px;
+    color: #b0b0b0;
+}

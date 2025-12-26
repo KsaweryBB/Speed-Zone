@@ -1,4 +1,4 @@
-import "./news.css";
+import styles from './news.module.css'
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -28,8 +28,8 @@ const News = () => {
   }, []);
 
   return (
-    <div className="set">
-      <div className="news">
+    <div className={styles.set}>
+      <div className={styles.news}>
         {news.slice(-10).map((newi, index) => {
           if (!newi) return null;
 
@@ -37,12 +37,12 @@ const News = () => {
             <Link
               key={newi.IDnews ?? index}
               to={`/news/${newi.IDnews}`}
-              className="box"
+              className={styles.box}
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <div className="element">
+              <div className={styles.element}>
                 <img
-                  className="img"
+                  className={styles.img}
                   src={`http://localhost:3001/${newi.image_path}`}
                   alt={newi.title}
                 />

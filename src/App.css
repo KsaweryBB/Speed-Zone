@@ -2,3 +2,12 @@ body {
     padding: 0;
     margin: 0;
 }
+.news-container {
+    width: 100%;
+}
+.news-container>h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

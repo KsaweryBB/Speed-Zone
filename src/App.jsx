@@ -6,6 +6,7 @@ import Slider from './components/slider/slider.jsx';
 import './App.css'
 import News from './components/news/news.jsx';
 import Block from './components/block/block.jsx';
+import Footer from './components/footer/footer.jsx';
 
 function App({ Articles }) {
 
@@ -33,8 +34,11 @@ function App({ Articles }) {
     <>  
     {isMobile ? <NavR/> : <Nav/>}
     <Slider></Slider>
-    <News></News>
-    <Block marka="Yamaha"></Block>
+    <section className='news-container'>
+      <h1>Aktualności</h1>
+      <News></News>
+    </section>
+    <Footer></Footer>
     </>
   )
 }
