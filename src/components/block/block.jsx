@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import styles from "./block.module.css";
+import { Link } from "react-router-dom";
 
-const Block = ({marka}) => {
+const Block = ({ marka }) => {
   const [oferta, setOferta] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3001/oferta")
       .then((res) => res.json())
       .then((data) => {
-        // zabezpieczenie na wypadek złych danych z API
         if (Array.isArray(data)) {
           setOferta(data);
         } else {
@@ -20,49 +21,50 @@ const Block = ({marka}) => {
       });
   }, []);
 
-  return (
-    <div style={styles.container}>
-      {oferta.map((ofer, index) => {
-        // ⛔ jeśli cały rekord jest null / undefined
-        if (!ofer) return null;
-        if (ofer.marka !== marka) return null;
-        if (ofer.marka === marka)
-        return (
-          <div
-            key={ofer.IDoferty ?? index}
-            style={styles.card}
-          >
-            {/* ⛔ jeśli Imie lub Nazwisko są puste → zwróć null */}
-            {(ofer.marka || ofer.model) && (
-              <h3>
-                {ofer.marka  ?? null} {ofer.model ?? null}
-              </h3>
-            )}
+  // Filtrujemy dane przed renderowaniem, aby kod był czystszy
+  const filtrowanaOferta = oferta.filter(ofer => ofer && ofer.marka === marka);
 
-            {/* ⛔ jeśli KlientID puste → null */}
-            {ofer.IDoferty && <p>{ofer.IDoferty}</p>}
+  return (
+    <div className={styles.container}>
+      {filtrowanaOferta.map((ofer) => (
+        <Link 
+          key={ofer.IDoferty} 
+          to={`/oferta/${ofer.IDoferty}`} 
+          className={styles.card}
+        >
+          <div className={styles.card_container}>
+            <h1 className={styles.title}>
+              {ofer.marka} <span className={styles.model}>{ofer.model}</span>
+            </h1>
+            
+            <div className={styles.image_wrapper}>
+              <img
+                src={`http://localhost:3001/${ofer.image_path}`}
+                alt={`${ofer.marka} ${ofer.model}`}
+                className={styles.image}
+              />
+            </div>
+
+            <div className={styles.info_grid}>
+              <div className={styles.info_item}>
+                <span className={styles.label}>Przebieg:</span> {ofer.przebieg}
+              </div>
+              <div className={styles.info_item}>
+                <span className={styles.label}>Pojemność:</span> {ofer.pojemnosc_skokowa}CC
+              </div>
+              <div className={styles.info_item}>
+                <span className={styles.label}>Moc:</span> {ofer.moc}KM
+              </div>
+              <div className={styles.info_item}>
+                <span className={styles.label}>Cena:</span> 
+                <span className={styles.price}> {ofer.cena} ZŁ</span>
+              </div>
+            </div>
           </div>
-        );
-      })}
+        </Link>
+      ))}
     </div>
   );
-};
-
-// Proste style inline
-const styles = {
-  container: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-    gap: "20px",
-    padding: "20px",
-  },
-  card: {
-    padding: "15px",
-    borderRadius: "10px",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-    backgroundColor: "#fff",
-    textAlign: "center",
-  },
 };
 
 export default Block;
